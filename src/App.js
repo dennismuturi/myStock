@@ -1,9 +1,12 @@
+import * as React from 'react';
+import {Routes, Route} from 'react-router-dom'
+import Dashboard from "../src/components/Dashboard"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <h1 class="text-3xl font-bold underline"> Hello world! </h1>
-      </header>
+    <div>
+      <Routes>
+        <Route exact path="/" element={<Dashboard/>}/>
+      </Routes>
     </div>
   );
 }

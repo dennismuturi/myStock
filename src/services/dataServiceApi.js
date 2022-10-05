@@ -1,4 +1,4 @@
-import {db} from './firebase.js'
+import {db} from '../config/firebase-config'
 
 import 
 {collection,
@@ -20,12 +20,12 @@ class StockDataService {
   };
 
   updateStock = (id, stockToUpdate) => {
-      stockDoc = doc(db,"stocks",id);
+      const stockDoc = doc(db,"stocks",id);
       return updateDoc(stockDoc,stockToUpdate);
   };
 
   deleteStock =(id)=>{
-    stockDoc = doc(db,"stocks",id);
+    const stockDoc = doc(db,"stocks",id);
     return deleteDoc(stockDoc);
   };
 
@@ -33,7 +33,7 @@ class StockDataService {
     return getDocs(stockCollection)
   }
 
-  getStock = () => {
+  getStock = (id) => {
     const stockDoc=doc(doc,"stocks",id);
     return getDocs(stockDoc)
   }
