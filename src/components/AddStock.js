@@ -5,13 +5,12 @@ import StockDataService from '../services/dataServiceApi'
 function AddStock() {
 
 const  [message,setMessage]=useState({error:false , message:""})
-const [total,setTotal]=useState(0)
 const [formData,setFormData]=useState({
     name:"",
     description:"",
-    qty:"",
-    price:"",
-    total:total,
+    qty:parseInt(0),
+    price:parseInt(0),
+    total:parseInt(0),
   })
 
     async function handleSubmit(e){   
@@ -20,9 +19,9 @@ const [formData,setFormData]=useState({
       if(
       formData.name=== "" 
       || formData.description==="" 
-      || formData.qty=== ""
-      || formData.price===""
-      || formData.total===""
+      || formData.qty===0
+      || formData.price===0
+      || formData.total===0
       ){
         setMessage({error:true, message:"All Fields Are Required!!"});
         return; 
@@ -41,9 +40,9 @@ const [formData,setFormData]=useState({
       setFormData({
         name:"",
         description:"",
-        qty:"",
-        price:"",
-        total:0,
+        qty:parseInt(0),
+        price:parseInt(0),
+        total:parseInt(0),
       })
 
       console.log(formData)
@@ -54,32 +53,59 @@ const [formData,setFormData]=useState({
     <div>{message.error}{message.message}</div>
     <form  onSubmit={handleSubmit}>
     <div>
+      <div>
+      <label>Name:</label>
       <input 
       name="name" type="text" placeholder="Product Name" value={formData.name} 
        onChange={(e)=>{
         setFormData({ ...formData, name: e.target.value })
       }}/>
+    </div>
+    
+    <div>
+      <label>Description</label>
       <input 
        name="description" type="text" placeholder="Product Description"  value={formData.description} 
        onChange={(e)=>{
         setFormData({ ...formData, description: e.target.value })
       }}
       />
-      <input name="qty" type="number" placeholder="Quantity"value={formData.qty} 
+    </div>
+    
+    <div>
+      <label>Quantity</label>
+      <input name="qty" type="number" placeholder="Quantity"value={parseInt(formData.qty)} 
        onChange={(e)=>{
-        setFormData({ ...formData, qty: e.target.value })
+        setFormData(
+          { ...formData,
+          qty: parseInt(e.target.value),
+        })
       }}
       />
-      <input name="price" type="number" placeholder="Price" value={formData.price}
+    </div>
+    
+    <div>
+      <label>Price</label>
+      <input name="price" type="number" placeholder="Price" value={parseInt(formData.price)}
        onChange={(e)=>{
-        setFormData({ ...formData, price: e.target.value })
+        setFormData(
+          { ...formData,
+           price: parseInt(e.target.value),
+           total:parseInt(formData.qty) * parseInt(formData.price)
+          
+          })
       }}
       />
-      <input name="total" type="number" placeholder="Total" value={formData.total}
-       onChange={(e)=>{
-        setFormData({ ...formData, total: e.target.value })
-      }}
-      />
+    </div>
+    
+    <div>
+      <label>Total Value</label>
+       <input name="total" type="number" placeholder="Total Value"
+       value={parseInt(formData.total)}
+       />
+    </div>
+     
+     
       
       <Button type={"submit"} title="Add Stock"/>
       </div>
