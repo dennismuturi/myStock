@@ -5,12 +5,13 @@ import StockDataService from '../services/dataServiceApi'
 function AddStock() {
 
 const  [message,setMessage]=useState({error:false , message:""})
+const [total,setTotal]=useState(0)
 const [formData,setFormData]=useState({
     name:"",
     description:"",
-    qty:null,
-    price:null,
-    total:null,
+    qty:"",
+    price:"",
+    total:total,
   })
 
     async function handleSubmit(e){   
@@ -19,21 +20,31 @@ const [formData,setFormData]=useState({
       if(
       formData.name=== "" 
       || formData.description==="" 
-      || formData.qty=== null
-      || formData.price===null
-      || formData.total===null
+      || formData.qty=== ""
+      || formData.price===""
+      || formData.total===""
       ){
         setMessage({error:true, message:"All Fields Are Required!!"});
         return; 
       }
       try {
+       
+         // await StockDataService.updateStock(id,formData);
+         
         await StockDataService.addStock(formData);
         setMessage({error:false,message:"New Stock Added Successfully!!"});
+        
       }
       catch(err){
         setMessage({error:true,message:err.message});
       }
-      setFormData(formData)
+      setFormData({
+        name:"",
+        description:"",
+        qty:"",
+        price:"",
+        total:0,
+      })
 
       console.log(formData)
   }
@@ -41,8 +52,8 @@ const [formData,setFormData]=useState({
     return(
   <div>
     <div>{message.error}{message.message}</div>
-    <form class="w-full max-w-sm" onSubmit={handleSubmit}>
-    <div class="flex items-center border-b border-teal-500 py-2">
+    <form  onSubmit={handleSubmit}>
+    <div>
       <input 
       name="name" type="text" placeholder="Product Name" value={formData.name} 
        onChange={(e)=>{
@@ -64,12 +75,13 @@ const [formData,setFormData]=useState({
         setFormData({ ...formData, price: e.target.value })
       }}
       />
-      <input name="total" type="number" placeholder="total" value={formData.total}
+      <input name="total" type="number" placeholder="Total" value={formData.total}
        onChange={(e)=>{
         setFormData({ ...formData, total: e.target.value })
       }}
       />
-      <Button type={"submit"} title="Add" className={"flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"}/>
+      
+      <Button type={"submit"} title="Add Stock"/>
       </div>
     </form>
   </div>

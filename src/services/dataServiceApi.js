@@ -34,8 +34,8 @@ class StockDataService {
   }
 
   getStock = (id) => {
-    const stockDoc=doc(doc,"stocks",id);
-    return getDocs(stockDoc)
+    const stockDoc=doc(db,"stocks",id);
+    return getDoc(stockDoc)
   }
 
 }
