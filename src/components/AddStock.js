@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import Button from './Button'
 import StockDataService from '../services/dataServiceApi'
+import "../styles.css"
 
-function AddStock() {
+function AddStock({handleCloseModal}) {
 
 const  [message,setMessage]=useState({error:false , message:""})
 const [formData,setFormData]=useState({
@@ -49,6 +50,10 @@ const [formData,setFormData]=useState({
   }
 
     return(
+  <div className="modal" style={{display:'block'}}>
+   <div className="modal-content">
+          <span onClick={()=>{handleCloseModal(false)}} className="close">&times;</span>
+      <div>
   <div>
     <div>{message.error}{message.message}</div>
     <form  onSubmit={handleSubmit}>
@@ -111,6 +116,9 @@ const [formData,setFormData]=useState({
       </div>
     </form>
   </div>
+</div>
+</div>
+</div>
     
   )
 }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import StockList from './StockList';
 import AddStock from './AddStock';
 import UpdateStock from './UpdateStock';
-
 import StockDataService from '../services/dataServiceApi'
 
 function Dashboard() {
@@ -36,22 +35,26 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
+      <button onClick={(modal)=>setModal(true)}>Add New Stock</button>
       {modal ? 
-      <UpdateStock 
+    <UpdateStock 
       handleCloseModal={(modal)=>setModal(false)}
       stockToUpdate={stockToUpdate}
       /> : null
       };
-      
-      <AddStock/>
+       {modal ? 
+      <AddStock handleCloseModal={(modal)=>setModal(false)}/>
+      : null
+      };
       <div>
       <StockList 
       stocks={myStocks} 
       deleteHandler={deleteHandler}
       getStockData={getStockData}
-      
       />
-      </div>
+     
+  
+    </div>
     </div>
   );
 }

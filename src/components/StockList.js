@@ -1,8 +1,30 @@
 import React from 'react';
 import StockItem from './StockItem';
 
-function StockList({ stocks,deleteHandler, getStockData }) {
 
+import {Link} from "react-router-dom"
+
+
+function StockList({ stocks,deleteHandler, getStockData }) {
+  const sampledata =[
+    {
+        id:1,
+        name:"Duracoat",
+        description:"Paint",
+        qty:5,
+        price:100,
+        total:500
+    },
+    {
+        id:2,
+        name:"Mabati",
+        description:"Iron sheets",
+        qty:10,
+        price:1000,
+        total:10000
+    },
+];
+console.log(sampledata)
 
   return (
     <table >
@@ -48,8 +70,30 @@ function StockList({ stocks,deleteHandler, getStockData }) {
          
         );
       })}
-    </tbody>
+
+    {sampledata.map((data)=>{
+      
+      return( 
+      <tr key={data.id}>
+         
+         <td>{data.name}</td>
+         <td>{data.description}</td>
+         <td>{data.qty}</td>
+         <td>{data.price}</td>
+         <td>{data.total}</td>
+         
+         <td>
+          <Link to={`/${data.id}`}> 
+          <button>View</button>
+          </Link>
+          </td>
+   </tr>
+   );
+  })}
+      
+        </tbody>
     </table>
+
   );
 }
 
