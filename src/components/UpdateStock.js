@@ -40,9 +40,12 @@ const [updateStock,setUpdate]=useState({
                         <h2>UPDATE: <span style={{color:'green'}}>{stockToUpdate.name}</span></h2>
                         <h3>How many <span style={{color:'green'}}>{`${stockToUpdate.name}s`}</span> have you sold so far? </h3>
                         <input type="number" placeholder="Input number of items sold" 
-                        value={updateStock.qty} 
+                          value={parseInt(updateStock.qty)} 
                          onChange={(e)=>{
-                          setUpdate({ ...updateStock, qty: e.target.value })
+                          setUpdate({ ...updateStock,
+                            qty: parseInt(e.target.value),
+                             total : parseInt(e.target.value) * parseInt(stockToUpdate.price)
+                            })
                         }}
                         />
                         <button>Update</button>

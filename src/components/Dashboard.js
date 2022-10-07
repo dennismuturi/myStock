@@ -7,8 +7,8 @@ import StockDataService from '../services/dataServiceApi'
 function Dashboard() {
   const [myStocks, setStocks] = useState([]);
   const [stockToUpdate,setStockToUpdate]=useState({})
-  const [modal,setModal]=useState(false)
-
+  const [updateModal,setUpdateModal]=useState(false)
+  const [addModal,setAddModal]=useState(false)
   useEffect(() => {
     getStocks();
   }, [myStocks]);
@@ -28,22 +28,22 @@ function Dashboard() {
  
   const getStockData= ({stockId,name,description,qty,price,total})=> {
     setStockToUpdate({stockId,name,description,qty,price,total});
-    setModal(true)
+    setUpdateModal(true)
 
   }
   
   return (
     <div>
       <h1>Dashboard</h1>
-      <button onClick={(modal)=>setModal(true)}>Add New Stock</button>
-      {modal ? 
+      <button onClick={(addModal)=>setAddModal(true)}>Add New Stock</button>
+      {updateModal ? 
     <UpdateStock 
-      handleCloseModal={(modal)=>setModal(false)}
+      handleCloseModal={(updateModal)=>setUpdateModal(false)}
       stockToUpdate={stockToUpdate}
       /> : null
       };
-       {modal ? 
-      <AddStock handleCloseModal={(modal)=>setModal(false)}/>
+       {addModal ? 
+      <AddStock handleCloseModal={(addModal)=>setAddModal(false)}/>
       : null
       };
       <div>
