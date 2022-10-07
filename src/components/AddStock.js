@@ -9,6 +9,7 @@ const  [message,setMessage]=useState({error:false , message:""})
 const [formData,setFormData]=useState({
     name:"",
     description:"",
+    sold:parseInt(0),
     qty:parseInt(0),
     price:parseInt(0),
     total:parseInt(0),
@@ -19,7 +20,7 @@ const [formData,setFormData]=useState({
       setMessage("");
       if(
       formData.name=== "" 
-      || formData.description==="" 
+      || formData.description===""
       || formData.qty===0
       || formData.price===0
       || formData.total===0
@@ -41,6 +42,7 @@ const [formData,setFormData]=useState({
       setFormData({
         name:"",
         description:"",
+        sold:parseInt(0),
         qty:parseInt(0),
         price:parseInt(0),
         total:parseInt(0),
@@ -96,7 +98,7 @@ const [formData,setFormData]=useState({
         setFormData(
           { ...formData,
            price: parseInt(e.target.value),
-           total:parseInt(formData.qty) * parseInt(formData.price)
+           total: parseInt(formData.qty) * parseInt(e.target.value)
           
           })
       }}

@@ -5,13 +5,9 @@ import ProductDetails from './components/ProductDetails';
 function App() {
   return (
     <div>
-    <Routes>
-      <Route path="/" element={
-      <Dashboard/>}
-      />
-      
-    <Route exact path=":id" element={<ProductDetails/>}/>
-    </Routes>
+    
+      <Dashboard/>
+    
   </div>
   );
 }

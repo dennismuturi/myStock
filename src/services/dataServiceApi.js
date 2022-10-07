@@ -12,12 +12,16 @@ import
 from "firebase/firestore"
 
 const stockCollection = collection(db,"stocks");
-
+const salesCollection= collection(db,"sales");
 class StockDataService {
 
   addStock = (newStock)=>{
       return addDoc(stockCollection,newStock);
   };
+
+  addSale = (newSale) => {
+    return addDoc(salesCollection,newSale);
+  }
 
   updateStock = (id, stockToUpdate) => {
       const stockDoc = doc(db,"stocks",id);

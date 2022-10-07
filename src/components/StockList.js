@@ -24,7 +24,6 @@ function StockList({ stocks,deleteHandler, getStockData }) {
         total:10000
     },
 ];
-console.log(sampledata)
 
   return (
     <table >
@@ -34,16 +33,19 @@ console.log(sampledata)
             <h3 >Name</h3>
           </th>
           <th>
-            <h3 >Description</h3>
+            <h3 >Category</h3>
           </th>
           <th>
             <h3 >Quantity</h3>
           </th>
           <th>
-            <h3>Price</h3>
+            <h3>Price (KES)</h3>
           </th>
           <th>
-            <h3>Total</h3>
+            <h3>Total Value (KES)</h3>
+          </th>
+          <th>
+            <h3></h3>
           </th>
           <th>
             <h3></h3>
@@ -53,12 +55,15 @@ console.log(sampledata)
           </th>
         </tr>
       {stocks.map((stock) => {
+       
         return (
           
           <StockItem
+            listId={0}
             key={stock.id}
             name={stock.name}
             description={stock.description}
+            sold={stock.sold}
             qty={stock.qty}
             price={stock.price}
             total={stock.total}
@@ -67,8 +72,8 @@ console.log(sampledata)
             getStockData={getStockData}
             
           />
-         
         );
+       
       })}
 
     {sampledata.map((data)=>{

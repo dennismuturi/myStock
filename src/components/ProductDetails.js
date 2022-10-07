@@ -2,30 +2,31 @@ import React from "react"
 import {useParams} from "react-router-dom"
 
 
-function ProductDetails(){
-    const sampledata =[
-        {
-            id:1,
-            name:"Duracoat",
-            description:"Paint",
-            qty:5,
-            price:100,
-            total:500
-        },
-        {
-            id:2,
-            name:"Mabati",
-            description:"Iron sheets",
-            qty:10,
-            price:1000,
-            total:10000
-        },
-    ];
-    const params=useParams();
-    console.log(params)
+function ProductDetails({allStocks}){
+const params=useParams();
+const stockToDisplay =allStocks.filter((stock)=> stock.id === params.id);
     return (
     <div>Product Details
-        <div>{params.id}</div>
+        <div>
+            {stockToDisplay.map((stock)=>{
+                return (
+                <div key={stock.id}>
+                  <h1>{stock.name}</h1> 
+                  <h2>{stock.description}</h2>
+                  <h3>
+                    <label>Quantity Remaining</label>
+                    <span>{stock.qty}</span>
+                  </h3>
+                  <h3>
+                    <label>Sold Today</label>
+                    <span>{stock.sold}</span>
+                  </h3>
+                 
+                </div> 
+                )
+            })
+        }
+        </div>
     </div>
            
     )

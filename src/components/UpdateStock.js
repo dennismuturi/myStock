@@ -9,6 +9,7 @@ const [updateStock,setUpdate]=useState({
         id :stockToUpdate.stockId,
         name : stockToUpdate.name,
         description:stockToUpdate.description,
+        sold: stockToUpdate.sold,
         qty:stockToUpdate.qty,
         price:stockToUpdate.price,
         total:stockToUpdate.total,
@@ -25,6 +26,7 @@ const [updateStock,setUpdate]=useState({
         setUpdate({
             name : "",
             description:"",
+            sold:"",
             qty:"",
             price:"",
             total:"", 
@@ -38,13 +40,25 @@ const [updateStock,setUpdate]=useState({
                     <form onSubmit={updateHandler}>
                        {message.message}
                         <h2>UPDATE: <span style={{color:'green'}}>{stockToUpdate.name}</span></h2>
+                        <h3>Previous Sales:{stockToUpdate.sold}</h3>
                         <h3>How many <span style={{color:'green'}}>{`${stockToUpdate.name}s`}</span> have you sold so far? </h3>
+                        <input type="number" placeholder="Input number of items sold" 
+                          value={parseInt(updateStock.sold)} 
+                         onChange={(e)=>{
+                          setUpdate({ ...updateStock,
+                             sold: parseInt(e.target.value),
+                             qty: parseInt(stockToUpdate.qty) -  parseInt(e.target.value),
+                             total : (parseInt(stockToUpdate.qty) -  parseInt(e.target.value)) * parseInt(stockToUpdate.price)
+                            })
+                        }}
+                        />
+                        <h3><span style={{color:'green'}}>Or</span> Restock Product Below  </h3>
                         <input type="number" placeholder="Input number of items sold" 
                           value={parseInt(updateStock.qty)} 
                          onChange={(e)=>{
                           setUpdate({ ...updateStock,
-                            qty: parseInt(e.target.value),
-                             total : parseInt(e.target.value) * parseInt(stockToUpdate.price)
+                             qty: parseInt(e.target.value),
+                             total : (parseInt(e.target.value) * parseInt(stockToUpdate.price))
                             })
                         }}
                         />
