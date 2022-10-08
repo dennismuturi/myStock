@@ -42,7 +42,7 @@ const [updateStock,setUpdate]=useState({
                 <span onClick={()=>{handleCloseModal(false)}} className="close">&times;</span>
                 <div>
                     <form onSubmit={updateHandler}>
-                       {message.message}
+                       <span style={{color: 'red'}}>{message.message}</span>
                         <h2>UPDATE: <span style={{color:'green'}}>{stockToUpdate.name}</span></h2>
                         <h3>Previous Sales:{stockToUpdate.sold}</h3>
                         <h3>How many <span style={{color:'green'}}>{`${stockToUpdate.name}s`}</span> have you sold so far? </h3>
@@ -81,6 +81,7 @@ const [updateStock,setUpdate]=useState({
                          onChange={(e)=>{
                            
                           setUpdate({ ...updateStock,
+                             initialStock: parseInt(e.target.value),
                              qty: parseInt(e.target.value),
                              total : (parseInt(e.target.value) * parseInt(stockToUpdate.price))
                             })

@@ -7,27 +7,24 @@ function StockItem ({stockId,name,description,sold,qty,price,total,sales,initial
   return (
           
            <tr>
-              <td>{name}</td>
-              <td>{description}</td>
-              <td>{initialStock}</td>
-              <td>{qty}</td>
-              <td>
+              <td style={{background: 'darkgrey',color:'darkgreen'}}><b>{name}</b></td>
+              <td style={{background: 'lightgrey',color:'darkgreen'}}>{description}</td>
+              <td style={{background: 'darkgreen',color:'white'}}>{initialStock}</td>
+              <td style={{background: 'green',color:'white'}}>{qty}</td>
+              <td style={{background: 'red',color:'white'}}>
                {sales.map((sale) =>sale.sold).reduce(function(prevValue,currentValue){
                 return prevValue+currentValue
                 })}
               </td>
               
-              <td>{price}</td>
-              <td>{total}</td>
+              
               <td>
               <Link to={`/${stockId}`}> 
-              <button>View</button>
+              <button style={{background: 'orange',color:'white'}}>View</button>
              </Link>
-             </td>
-              <td>
-                <button onClick={(e)=>getStockData({stockId,name,description,sold,qty,price,total,sales})}>Update</button></td>
-              <td>
-              <button onClick={(e)=>deleteHandler(stockId)}>Delete</button>
+             <button style={{background: 'green',color:'white'}} onClick={(e)=>getStockData({stockId,name,description,sold,qty,price,total,sales})}>Update</button>
+             
+              <button style={{background: 'red',color:'white'}}onClick={(e)=>deleteHandler(stockId)}>Delete</button>
               </td>
             </tr>
         

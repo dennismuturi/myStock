@@ -35,8 +35,13 @@ function Dashboard() {
   }
   
   return (
-    <div>
-      <h1>myStock</h1>
+    
+    <div className="wrapper">
+     <h1 style={{color:'green'}}>myStock</h1>
+     
+      <div className="item1">
+      
+      </div>
       {
         myStocks.map((stock)=>{
           if(stock.qty === 1)
@@ -54,7 +59,7 @@ function Dashboard() {
           }
         })
       }
-      <button onClick={(addModal)=>setAddModal(true)}>Add New Stock</button>
+    <button style={{background: 'green',color:'white'}}className="item2" onClick={(addModal)=>setAddModal(true)}>Add New Stock</button>
       {updateModal ? 
     <UpdateStock 
       handleCloseModal={(updateModal)=>setUpdateModal(false)}
