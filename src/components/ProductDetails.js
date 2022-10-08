@@ -1,33 +1,55 @@
 import React from "react"
 import {useParams} from "react-router-dom"
-import "../style.css"
+import "../styles.css"
 
 function ProductDetails({allStocks}){
 const params=useParams();
 const stockToDisplay =allStocks.filter((stock)=> stock.id === params.id);
     return (
-    <div>Product Details
-        <div>
-            {stockToDisplay.map((stock)=>{
+    <div className="wrapper">
+      {stockToDisplay.map((stock)=>{
                 return (
                 <div key={stock.id}>
-                  <h1>{stock.name}</h1> 
-                  <h2>{stock.description}</h2>
-                  <h3>
-                    <label>Quantity Remaining</label>
-                    <span>{stock.qty}</span>
-                  </h3>
-                  <h3>
-                    <label>Sold Today</label>
-                    <span>{stock.sold}</span>
-                  </h3>
+                  <h1 style={{color:'red'}}>{stock.name}</h1> 
+                  <p>
+                    <label style={{color:'green'}}>Quantity Remaining</label>
+                    <span style={{color:'red'}}>{stock.qty}</span>
+                  </p>
+                  <p>
+                    <label style={{color:'green'}}>Sold Today</label>
+                    <span style={{color:'red'}}>{stock.sold}</span>
+                  </p>
+                  <table>
+                    <tbody>
+                      <tr>
+                      <th>Sold</th>
+                      <th>Sell Price</th>
+                      <th>Total</th>
+                      <th>Date</th>
+                    </tr>
+                  
+                    {
+                      stock.sales.map((sale,index)=> (
+                         <tr>
+                         <td>{sale.sold}</td>
+                         <td>{sale.sellPrice}</td>
+                         <td></td>
+                         <td></td>
+                         </tr>
+                        )
+                      )
+                    }
+                   </tbody>
+                  </table>
+
+
                  
                 </div> 
                 )
             })
         }
-        </div>
-    </div>
+      </div>
+    
            
     )
 }

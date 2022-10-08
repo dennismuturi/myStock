@@ -78,10 +78,13 @@ function Dashboard() {
       deleteHandler={deleteHandler}
       getStockData={getStockData}
       />
+      
     }/>
       
     <Route exact path=":id" element={<ProductDetails allStocks={myStocks}/>}/>
     </Routes>
+
+    {myStocks.length < 1 ? <p style={{color: 'red'}}>data is currently unavailable,We are working to resolve it</p> :null}
     </div>
     </div>
   );

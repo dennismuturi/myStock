@@ -12,9 +12,9 @@ function StockItem ({stockId,name,description,sold,qty,price,total,sales,initial
               <td style={{background: 'darkgreen',color:'white'}}>{initialStock}</td>
               <td style={{background: 'green',color:'white'}}>{qty}</td>
               <td style={{background: 'red',color:'white'}}>
-               {sales.map((sale) =>sale.sold).reduce(function(prevValue,currentValue){
+              {sales ? sales.map((sale) =>sale.sold).reduce(function(prevValue,currentValue){
                 return prevValue+currentValue
-                })}
+                }) : <h1>Data is currently unavailble, We are working to resolve it</h1>}
               </td>
               
               

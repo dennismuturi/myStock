@@ -2,8 +2,6 @@ import React from 'react';
 import StockItem from './StockItem';
 
 
-import {Link} from "react-router-dom"
-
 
 function StockList({ stocks,deleteHandler, getStockData }) {
  
