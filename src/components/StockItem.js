@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom"
 import "../styles.css"
 
-function StockItem ({stockId,name,description,sold,qty,price,total,deleteHandler,getStockData}){
+function StockItem ({stockId,name,description,sold,qty,price,total,sales,deleteHandler,getStockData}){
 
   return (
            <tr>
@@ -17,7 +17,7 @@ function StockItem ({stockId,name,description,sold,qty,price,total,deleteHandler
              </Link>
              </td>
               <td>
-                <button onClick={(e)=>getStockData({stockId,name,description,sold,qty,price,total})}>Update</button></td>
+                <button onClick={(e)=>getStockData({stockId,name,description,sold,qty,price,total,sales})}>Update</button></td>
               <td>
               <button onClick={(e)=>deleteHandler(stockId)}>Delete</button>
               </td>

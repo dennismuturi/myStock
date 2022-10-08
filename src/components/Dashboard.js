@@ -28,8 +28,8 @@ function Dashboard() {
  
   }
  
-  const getStockData= ({stockId,name,description,qty,sold,price,total})=> {
-    setStockToUpdate({stockId,name,description,qty,sold,price,total});
+  const getStockData= ({stockId,name,description,qty,sold,price,total,sales})=> {
+    setStockToUpdate({stockId,name,description,qty,sold,price,total,sales});
     setUpdateModal(true)
 
   }

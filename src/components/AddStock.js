@@ -4,7 +4,7 @@ import StockDataService from '../services/dataServiceApi'
 import "../styles.css"
 
 function AddStock({handleCloseModal}) {
-
+const [data,setData]=useState([{sold:0,sellPrice:0, total:0,date: new Date()}])
 const  [message,setMessage]=useState({error:false , message:""})
 const [formData,setFormData]=useState({
     name:"",
@@ -13,6 +13,7 @@ const [formData,setFormData]=useState({
     qty:parseInt(0),
     price:parseInt(0),
     total:parseInt(0),
+    sales:data
   })
 
     async function handleSubmit(e){   

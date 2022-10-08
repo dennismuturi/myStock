@@ -67,6 +67,7 @@ function StockList({ stocks,deleteHandler, getStockData }) {
             qty={stock.qty}
             price={stock.price}
             total={stock.total}
+            sales={stock.sales}
             stockId={stock.id}
             deleteHandler={deleteHandler}
             getStockData={getStockData}
