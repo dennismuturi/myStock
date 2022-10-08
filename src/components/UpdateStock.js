@@ -36,7 +36,6 @@ const [updateStock,setUpdate]=useState({
             total:"", 
         })
     }
-    console.log(sales)
     return (
         <div className="modal" style={{display:'block'}}>
             <div className="modal-content">
@@ -62,8 +61,8 @@ const [updateStock,setUpdate]=useState({
                             })
                         }} 
                         />
-                        <input type="number" placeholder="at How much" 
-                          value={parseInt(sales[0].sellPrice)} 
+                         <input type="number" placeholder="at How much" 
+                          value={parseInt(updateStock.price)} 
                          onChange={(e)=>{
                          setSales([...stockToUpdate.sales,{
                                 date: new Date(),
@@ -71,6 +70,9 @@ const [updateStock,setUpdate]=useState({
                                 sellPrice:parseInt(e.target.value),
                                
                                }])
+                          setUpdate({ ...updateStock,
+                             price: parseInt(e.target.value),
+                            })
                         }}
                         />
                         <h3><span style={{color:'green'}}>Or</span> Restock Product Below  </h3>

@@ -13,6 +13,7 @@ const [formData,setFormData]=useState({
     qty:parseInt(0),
     price:parseInt(0),
     total:parseInt(0),
+    initialStock:parseInt(0),
     sales:data
   })
 
@@ -47,6 +48,7 @@ const [formData,setFormData]=useState({
         qty:parseInt(0),
         price:parseInt(0),
         total:parseInt(0),
+        initialStock:parseInt(0)
       })
 
       console.log(formData)
@@ -87,6 +89,7 @@ const [formData,setFormData]=useState({
         setFormData(
           { ...formData,
           qty: parseInt(e.target.value),
+          initialStock:parseInt(e.target.value)
         })
       }}
       />

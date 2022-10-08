@@ -2,13 +2,21 @@ import React from "react"
 import {Link} from "react-router-dom"
 import "../styles.css"
 
-function StockItem ({stockId,name,description,sold,qty,price,total,sales,deleteHandler,getStockData}){
+function StockItem ({stockId,name,description,sold,qty,price,total,sales,initialStock,deleteHandler,getStockData}){
 
   return (
+          
            <tr>
               <td>{name}</td>
               <td>{description}</td>
+              <td>{initialStock}</td>
               <td>{qty}</td>
+              <td>
+               {sales.map((sale) =>sale.sold).reduce(function(prevValue,currentValue){
+                return prevValue+currentValue
+                })}
+              </td>
+              
               <td>{price}</td>
               <td>{total}</td>
               <td>
