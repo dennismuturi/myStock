@@ -5,14 +5,15 @@ import "../styles.css"
 function ProductDetails({allStocks}){
 const params=useParams();
 const stockToDisplay =allStocks.filter((stock)=> stock.id === params.id);
-    return (
+ 
+return (
     <div className="wrapper">
       {stockToDisplay.map((stock)=>{
                 return (
-                <div key={stock.id}>
+                <div  key={stock.id}>
                   <h1 style={{color:'red'}}>{stock.name}</h1> 
                   <p>
-                    <label style={{color:'green'}}>Quantity Remaining</label>
+                    <label style={{color:'green'}}>Remaining Stock</label>
                     <span style={{color:'red'}}>{stock.qty}</span>
                   </p>
                   <p>
@@ -24,8 +25,7 @@ const stockToDisplay =allStocks.filter((stock)=> stock.id === params.id);
                       <tr>
                       <th>Sold</th>
                       <th>Sell Price</th>
-                      <th>Total</th>
-                      <th>Date</th>
+                     
                     </tr>
                   
                     {
@@ -33,8 +33,7 @@ const stockToDisplay =allStocks.filter((stock)=> stock.id === params.id);
                          <tr>
                          <td>{sale.sold}</td>
                          <td>{sale.sellPrice}</td>
-                         <td></td>
-                         <td></td>
+                         
                          </tr>
                         )
                       )

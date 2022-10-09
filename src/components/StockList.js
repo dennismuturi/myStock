@@ -8,7 +8,7 @@ function StockList({ stocks,deleteHandler, getStockData }) {
   return (
     <table >
       <tbody>
-        <tr>
+        <tr  style={{background:'darkgrey'}}>
           <th>
             <h3 >Name</h3>
           </th>
