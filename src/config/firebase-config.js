@@ -9,14 +9,12 @@ import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: "data-8fa40.firebaseapp.com",
-  projectId: "data-8fa40",
-  storageBucket: "data-8fa40.appspot.com",
-  messagingSenderId: "905403708323",
-  appId: "1:905403708323:web:cebd1788ee5b272f182016"
+  authDomain: "services-bbe0f.firebaseapp.com",
+  projectId: "services-bbe0f",
+  storageBucket: "services-bbe0f.appspot.com",
+  messagingSenderId: "251479731219",
+  appId: "1:251479731219:web:e3e6190b156ddd75f063e6"
 };
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 

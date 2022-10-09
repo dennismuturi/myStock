@@ -33,7 +33,7 @@ return (
                          <tr>
                          <td>{sale.sold}</td>
                          <td>{sale.sellPrice}</td>
-                         
+                         <td>{sale.date.toDate()}</td>
                          </tr>
                         )
                       )
