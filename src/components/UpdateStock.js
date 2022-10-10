@@ -4,7 +4,8 @@ import "../styles.css"
 
 
 function UpdateStock({handleCloseModal,stockToUpdate}){
-const [sales,setSales]=useState(stockToUpdate.sales);
+
+const [sales,setSales]=useState(stockToUpdate.sales) 
 const [message,setMessage]=useState({error:false , message:""});
 const [updateStock,setUpdate]=useState({
         id :stockToUpdate.stockId,
@@ -15,7 +16,6 @@ const [updateStock,setUpdate]=useState({
         price:stockToUpdate.price,
         total:stockToUpdate.total,
 });
-
     async function updateHandler(e){
         e.preventDefault();
        
@@ -36,6 +36,8 @@ const [updateStock,setUpdate]=useState({
             total:"", 
         })
     }
+
+
     return (
         <div className="modal" style={{display:'block'}}>
             <div className="modal-content">
@@ -61,6 +63,7 @@ const [updateStock,setUpdate]=useState({
                             })
                         }} 
                         />
+                         <label>At How Much</label>
                          <input type="number" placeholder="at How much" 
                           value={parseInt(updateStock.price)} 
                          onChange={(e)=>{
@@ -76,7 +79,7 @@ const [updateStock,setUpdate]=useState({
                         }}
                         />
                         <h3><span style={{color:'green'}}>Or</span> Restock Product Below  </h3>
-                        <input type="number" placeholder="Input number of items sold" 
+                        <input type="number" placeholder="Input restock" 
                           value={parseInt(updateStock.qty)} 
                          onChange={(e)=>{
                            
@@ -93,6 +96,7 @@ const [updateStock,setUpdate]=useState({
             </div>
         </div>
     );
+    
 }
 
 export default UpdateStock;
