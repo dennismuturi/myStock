@@ -30,7 +30,7 @@ function StockList({ stocks,deleteHandler, getStockData }) {
            
           </th>
         </tr>
-      {stocks.map((stock) => {
+      {Array.isArray(stocks) ? stocks.map((stock) => {
        
         return (
           
@@ -52,7 +52,9 @@ function StockList({ stocks,deleteHandler, getStockData }) {
           />
         );
        
-      })}
+      })
+      : null
+    }
       </tbody>
     </table>
 
